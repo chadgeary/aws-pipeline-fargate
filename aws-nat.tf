@@ -64,11 +64,11 @@ resource "aws_vpc_endpoint" "aws-vpc-s3-endpointABCD" {
   route_table_ids         = [aws_route_table.aws-routeAB.id, aws_route_table.aws-routeAC.id, aws_route_table.aws-routeBD.id]
 }
 
-resource "aws_vpc_endpoint" "aws-vpc-logs-endpointAB" {
+resource "aws_vpc_endpoint" "aws-vpc-logs-endpointCD" {
   vpc_id                  = aws_vpc.aws-vpc.id
   service_name            = "com.amazonaws.${var.aws_region}.logs"
   vpc_endpoint_type       = "Interface"
   security_group_ids      = [aws_security_group.aws-sg.id]
   private_dns_enabled     = true
-  subnet_ids              = [aws_subnet.aws-netA.id, aws_subnet.aws-netB.id]
+  subnet_ids              = [aws_subnet.aws-netC.id, aws_subnet.aws-netD.id]
 }
