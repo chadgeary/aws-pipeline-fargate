@@ -69,3 +69,13 @@ variable "service_port" {
 variable "service_protocol" {
   type                    = string
 }
+
+variable "service_count" {
+  type                    = number
+}
+
+variable "client_cidrs" {
+  type                     = list
+  description              = "List of subnets (in CIDR notation) granted load balancer port and protocol ingress"
+  default                  = []
+}

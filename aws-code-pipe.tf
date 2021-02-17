@@ -40,4 +40,5 @@ resource "aws_codepipeline" "aws-codepipe" {
       }
     }
   }
+  depends_on              = [aws_iam_role_policy_attachment.aws-codepipe-policy-role-attach]
 }

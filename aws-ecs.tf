@@ -28,7 +28,7 @@ resource "aws_ecs_service" "aws-ecs-service" {
   name                     = "${var.aws_prefix}-ecsservice-${random_string.aws-suffix.result}"
   cluster                  = aws_ecs_cluster.aws-ecs-cluster.id
   task_definition          = aws_ecs_task_definition.aws-ecs-task.arn
-  desired_count            = 1
+  desired_count            = var.service_count
   launch_type                = "FARGATE"
   load_balancer {
     target_group_arn         = aws_lb_target_group.aws-lbtg.arn
@@ -40,5 +40,4 @@ resource "aws_ecs_service" "aws-ecs-service" {
     security_groups          = [aws_security_group.aws-sg.id]
     assign_public_ip         = false
   }
-  depends_on               = [aws_lb_listener.aws-lb-listen]
 }

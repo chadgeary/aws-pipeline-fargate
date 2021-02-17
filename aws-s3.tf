@@ -77,6 +77,6 @@ resource "aws_s3_bucket_public_access_block" "aws-s3-code-bucket-pub-access" {
 resource "aws_s3_bucket_object" "aws-s3-code-bucket-archive-object" {
   bucket                  = aws_s3_bucket.aws-s3-code-bucket.id
   key                     = "code-archive.zip"
-  source                  = data.archive_file.aws-code-archive.output_path
+  content_base64          = filebase64(data.archive_file.aws-code-archive.output_path)
   kms_key_id              = aws_kms_key.aws-kmscmk-s3.arn
 }
