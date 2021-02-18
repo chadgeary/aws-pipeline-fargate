@@ -45,7 +45,7 @@ resource "aws_codebuild_project" "aws-codebuild" {
       aws_subnet.aws-netC.id,
       aws_subnet.aws-netD.id
     ]
-    security_group_ids        = [aws_security_group.aws-sg.id]
+    security_group_ids        = [aws_security_group.aws-sg-private.id]
   }
-  depends_on                = [aws_security_group_rule.aws-sg-tcp-out, aws_security_group_rule.aws-sg-udp-out, aws_nat_gateway.aws-natgwAC, aws_nat_gateway.aws-natgwBD, aws_vpc_endpoint.aws-vpc-s3-endpointABCD]
+  depends_on                = [aws_security_group_rule.aws-sg-private-tcp-out, aws_security_group_rule.aws-sg-private-udp-out, aws_nat_gateway.aws-natgwAC, aws_nat_gateway.aws-natgwBD, aws_vpc_endpoint.aws-vpc-s3-endpointABCD, aws_iam_role_policy_attachment.aws-codebuild-policy-role-attach]
 }
