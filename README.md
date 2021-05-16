@@ -6,3 +6,5 @@ Terraform full stack container service in AWS.
 - CodeBuild creates the container image and pushes to ECR (Container Repository)
 - ECS Task starts `n` containers in Fargate from ECR image
 - ECS Service attaches Fargate containers to Load Balancer
+
+Side note - the example Dockerfile is Cloudflared's DoH (DNS over HTTPS) client/server
